@@ -1,0 +1,17 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spEnvironment_GetByID]    Script Date: 24/03/2023 09:49:30 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[spEnvironment_GetByID] (@EnvironmentID INT)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT [EnvironmentName]
+    FROM [environment]
+    WHERE [id] = @EnvironmentID
+END

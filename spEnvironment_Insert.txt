@@ -1,0 +1,18 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spEnvironment_Insert]    Script Date: 24/03/2023 09:49:52 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spEnvironment_Insert]
+  @EnvironmentName varchar(50)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  INSERT INTO environment (EnvironmentName)
+  VALUES (@EnvironmentName);
+
+  SELECT SCOPE_IDENTITY() AS id;
+END;
