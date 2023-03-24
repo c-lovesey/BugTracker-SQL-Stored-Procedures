@@ -1,0 +1,13 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spBugReport_Delete]    Script Date: 24/03/2023 09:46:00 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spBugReport_Delete](@id INT)
+AS
+BEGIN
+    DELETE FROM bug_report
+    WHERE id = @id
+END

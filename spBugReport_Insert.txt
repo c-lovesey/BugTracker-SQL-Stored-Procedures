@@ -1,0 +1,30 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spBugReport_Insert]    Script Date: 24/03/2023 09:46:43 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spBugReport_Insert]
+@BugDescription varchar(MAX),
+                                @EnvironmentID int,
+                                @BugPriority varchar(50),
+                                @BugTitle varchar(MAX),
+                                @ApplicationID int,
+                                @BugLabel varchar(MAX),
+                                @BugConfirmation varchar(MAX),
+                                @BugCategory varchar(MAX),
+                                @BugStatus varchar(MAX),
+                                @BugResolution varchar(MAX),
+                                @BugFixedVersion varchar(MAX),
+                                @BugAffectedVersion varchar(MAX)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  INSERT INTO bug_report (BugDescription, EnvironmentID, BugPriority,BugTitle,ApplicationID,BugLabel,BugConfirmation,BugCategory,BugStatus,BugResolution,BugFixedVersion,BugAffectedVersions)
+VALUES (@BugDescription, @EnvironmentID, @BugPriority, @BugTitle, @ApplicationID, @BugLabel, @BugConfirmation,@BugCategory, @BugStatus, @BugResolution, @BugFixedVersion, @BugAffectedVersion)
+
+
+  SELECT SCOPE_IDENTITY() AS id;
+END;

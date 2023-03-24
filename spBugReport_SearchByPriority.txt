@@ -1,0 +1,13 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spBugReport_SearchByPriority]    Script Date: 24/03/2023 09:47:27 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spBugReport_SearchByPriority] (@BugPriority NVARCHAR(MAX))
+AS
+BEGIN
+    SELECT * FROM bug_report
+    WHERE BugPriority LIKE '%' + @BugPriority + '%'
+END

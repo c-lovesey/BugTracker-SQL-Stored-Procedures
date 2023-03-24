@@ -1,0 +1,20 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spBugReport_Search]    Script Date: 24/03/2023 09:47:03 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spBugReport_Search] (@ApplicationID INT = NULL, @BugStatus VARCHAR(20) = NULL, @BugResolution VARCHAR(20) = NULL, @BugCategory VARCHAR(20) = NULL, @BugTitle VARCHAR(100) = NULL)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT [id], [BugDescription], [EnvironmentID], [BugPriority], [BugTitle], [ApplicationID], [BugLabel], [BugConfirmation], [BugCategory], [BugStatus], [BugResolution], [BugFixedVersion], [BugAffectedVersions]
+    FROM [bug_report]
+    WHERE (@ApplicationID IS NULL OR [ApplicationID] = @ApplicationID)
+      AND (@BugStatus IS NULL OR [BugStatus] = @BugStatus)
+      AND (@BugResolution IS NULL OR [BugResolution] = @BugResolution)
+      AND (@BugCategory IS NULL OR [BugCategory] = @BugCategory)
+      AND (@BugTitle IS NULL OR [BugTitle] LIKE '%' + @BugTitle + '%')
+END

@@ -1,0 +1,40 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spBugReport_Update]    Script Date: 24/03/2023 09:48:19 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spBugReport_Update]
+  @id int,
+  @BugDescription nvarchar(MAX),
+  @EnvironmentID int,
+  @BugPriority nvarchar(MAX),
+  @BugTitle nvarchar(MAX),
+  @ApplicationID int,
+  @BugLabel nvarchar(MAX),
+  @BugConfirmation nvarchar(MAX),
+  @BugCategory nvarchar(MAX),
+  @BugStatus nvarchar(MAX),
+  @BugResolution nvarchar(MAX),
+  @BugFixedVersion nvarchar(MAX),
+  @BugAffectedVersions nvarchar(MAX)
+AS
+BEGIN
+  UPDATE bug_report
+  SET 
+    BugDescription = @BugDescription,
+    EnvironmentID = @EnvironmentID,
+    BugPriority = @BugPriority,
+    BugTitle = @BugTitle,
+    ApplicationID = @ApplicationID,
+    BugLabel = @BugLabel,
+    BugConfirmation = @BugConfirmation,
+    BugCategory = @BugCategory,
+    BugStatus = @BugStatus,
+    BugResolution = @BugResolution,
+    BugFixedVersion = @BugFixedVersion,
+    BugAffectedVersions = @BugAffectedVersions
+  WHERE
+    id = @id
+END
