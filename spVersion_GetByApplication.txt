@@ -1,0 +1,17 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spVersions_GetByApplication]    Script Date: 24/03/2023 09:51:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spVersions_GetByApplication]
+  @ApplicationID int
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT *
+  FROM version
+  WHERE ApplicationID = @ApplicationID;
+END;

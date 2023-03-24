@@ -1,0 +1,19 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spVersion_Insert]    Script Date: 24/03/2023 09:50:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spVersion_Insert]
+  @VersionName varchar(50),
+  @ApplicationID int
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  INSERT INTO dbo.Version (VersionName, ApplicationID)
+  VALUES (@VersionName, @ApplicationID);
+
+  SELECT SCOPE_IDENTITY() AS VersionID;
+END;
