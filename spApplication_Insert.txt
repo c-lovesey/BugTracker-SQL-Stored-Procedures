@@ -1,0 +1,19 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spApplication_Insert]    Script Date: 24/03/2023 09:44:51 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spApplication_Insert]
+  @ApplicationName varchar(255),
+  @ApplicationLetterID varchar(255)
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  INSERT INTO dbo.Application (ApplicationName,ApplicationLetterID)
+  VALUES (@ApplicationName,@ApplicationLetterID);
+
+  SELECT SCOPE_IDENTITY() AS ApplicationID;
+END;

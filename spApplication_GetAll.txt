@@ -1,0 +1,15 @@
+USE [BugTracker]
+GO
+/****** Object:  StoredProcedure [dbo].[spApplication_GetAll]    Script Date: 24/03/2023 09:44:35 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[spApplication_GetAll]
+AS
+BEGIN
+  SET NOCOUNT ON;
+
+  SELECT *
+  FROM application;
+END;
